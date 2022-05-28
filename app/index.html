@@ -3,11 +3,98 @@
   <head>
     <meta charset="utf-8">
     <title>Party App</title>
-  </head>
-  <body>
-<h1>Schau bald nochmal vorbei...</h1>
-<br><br><br>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<p>Info: Bitte lösche deine Cookies nicht, da du dann keinen Zugriff mehr auf diese Seite hast!</p>
+    <script type="text/javascript">
+    function setCookie(cname,cvalue,exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  let user = getCookie("verify");
+  if (user != "") {
+    console.log("Oh, juhu. Du hast ein EasterEgg gefunden. Herzlichen Glückwunsch.")
+  }
+  else {
+    window.location.replace("../")
+  }
+}
+</script>
+  </head>
+  <body onload="checkCookie()">
+<section>
+    <div class="page">
+      <div class="countdown-col col">
+        <div class="time middle">
+          <span>
+            <div id="d">XX</div>
+            Tage
+          </span>
+          <span>
+            <div id="h">XX</div>
+            Stunden
+          </span>
+          <span>
+            <div id="m">XX</div>
+            Minuten
+          </span>
+          <span>
+            <div id="s">XX</div>
+            Sekunden
+          </span>
+        </div>
+      </div>
+    </div>
+    <script src="countdown.js"></script>
+</section>
+<section>
+<h1>Hast du noch Ideen, was wir machen könnten?</h1>
+
+<input type="text" name="ideen" value="" placeholder="Deine Idee hier..." id="idee">
+<br>
+<button type="button" name="button" onclick="sendMessage()">Senden</button>
+
+
+<script>
+function sendMessage() {
+function sleep(milliseconds) {
+const date = Date.now();
+let currentDate = null;
+do {
+  currentDate = Date.now();
+} while (currentDate - date < milliseconds);
+};
+  var request = new XMLHttpRequest();
+  request.open("POST", "https://discord.com/api/webhooks/980044088801894400/DEiyaIZHq1M88Fb3dscgqp4VGyq_gEhhp5aCmbQ8aSTpB9s-moC9evNzVMt8QkU4VWFw");
+  request.setRequestHeader('Content-type', 'application/json');
+  var params = {
+    content: ("> **Idee  : **" + document.getElementById('idee').value)
+  }
+  request.send(JSON.stringify(params));
+sleep(400);
+window.location.reload(false);
+};
+</script>
+</section>
   </body>
 </html>
