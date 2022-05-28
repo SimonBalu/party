@@ -47,9 +47,30 @@ body {
 }
 
 
+input[type="text"] {
+  width: 250px;
+  height: 25px;
+  font-size: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  margin-left: -50px;
+  text-align: center;
+}
 
+button {
+  margin-left: -50px;
+  margin-top: 370px;
+  width: 250px;
+  height: 40px;
+  border-radius: 50px;
+  border: 0;
+  background-color: green;
+  color: #fff;
+}
 
+button:hover {
 
+}
 
 ::selection{
   background:none;
