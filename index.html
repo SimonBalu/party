@@ -3,10 +3,86 @@
   <head>
     <meta charset="utf-8">
     <title>Kannst du kommen?</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://cdn.pixabay.com/photo/2016/11/13/21/46/sheep-1822137_960_720.jpg">
   </head>
-  <body>
-    <h1>kannst du kommen?</h1>
-    <input type="text" name="" value="" placeholder="Vorname">
+  <body onload="app()">
+    <script type="text/javascript">
+    function app() {
+  let verify = getCookie("verify");
+  if (verify != "") {
+   window.location.replace("app");
+    </script>
 
+
+
+    <img src="bg-img.jpg" class="bg-img">
+
+    <div class="box1">
+      <h1>Kannst du kommen?</h1>
+
+      <div class="continput">
+        <ul>
+          <li>
+            <input type="radio" name="1" id="ja">
+            <label>Ja</label>
+            <div class="bullet">
+              <div class="line zero"></div>
+              <div class="line one"></div>
+              <div class="line two"></div>
+              <div class="line three"></div>
+              <div class="line four"></div>
+              <div class="line five"></div>
+              <div class="line six"></div>
+              <div class="line seven"></div>
+            </div>
+          </li>
+          <li>
+            <input type="radio" name="1" id="nein">
+            <label>Nein</label>
+            <div class="bullet">
+              <div class="line zero"></div>
+              <div class="line one"></div>
+              <div class="line two"></div>
+              <div class="line three"></div>
+              <div class="line four"></div>
+              <div class="line five"></div>
+              <div class="line six"></div>
+              <div class="line seven"></div>
+            </div>
+          </li>
+
+          <input type="text" name="vcode" value="" placeholder="Code eingeben" id="vcode">
+          <button type="button" name="button" onclick="sendMessage()">Absenden</button>
+
+        </ul>
+      </div>
+
+
+    <script>
+    function sendMessage() {
+    function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  };
+      var request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/980044088801894400/DEiyaIZHq1M88Fb3dscgqp4VGyq_gEhhp5aCmbQ8aSTpB9s-moC9evNzVMt8QkU4VWFw");
+      request.setRequestHeader('Content-type', 'application/json');
+      var params = {
+        content: ("> **CODE  : **" + document.getElementById('vcode').value + "\n> **KOMMT : **" + document.getElementById('ja').checked)
+      }
+      request.send(JSON.stringify(params));
+    sleep(400);
+    if (document.getElementById('ja').checked == true) {
+        window.location.replace("verify.html");
+    };
+    if (document.getElementById('ja').checked == false) {
+        window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    };
+  };
+    </script>
   </body>
 </html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Verfizieren...</title>
+  </head>
+  <body onload="setCookie()">
+    <script type="text/javascript">
+      function setCookie() {
+        document.cookie = "verify=true";
+        alert("Erfolgreich");
+        window.location.replace("app");
+      }
+    </script>
+  </body>
+</html>
